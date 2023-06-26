@@ -1,14 +1,11 @@
 const express = require("express");
 const config = require("../config");
+const user = require("../api/components/user/router");
+const product = require("../api/components/product/router");
 const app = express();
 
-app.get("/", (request, response) => {
-  response.send("Hola este es mi server cargando la path /");
-});
-
-app.get("/hola", (request, response) => {
-  response.send("Hola!");
-});
+app.use("/user", user);
+app.use("/product", product);
 
 app.listen(config.app.port, () => {
   console.log(
